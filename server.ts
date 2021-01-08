@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import getMoveArgs from "./src/main";
 const app = express();
 import bodyParser from "body-parser";
+import cors from 'cors';
+app.use(cors())
 
 // Controllers (route handlers)
 
