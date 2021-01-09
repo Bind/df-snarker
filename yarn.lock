@@ -359,6 +359,13 @@
     fastfile "0.0.18"
     ffjavascript "^0.2.30"
 
+"@types/big-integer@^0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@types/big-integer/-/big-integer-0.0.31.tgz#021c505b5d8ad592cb7ffcda7af88b4fc12d4995"
+  integrity sha512-nYrYenHwC07vTBXoQ8jUUi6sednNYHGQxh0ecvfWm46n3djgxxbe7AZIJVaGjzQaEQVEcH6KmB6VMt//vAP0AA==
+  dependencies:
+    big-integer "*"
+
 "@types/body-parser@*":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.19.0.tgz#0685b3c47eb3006ffed117cdd55164b61f80538f"
@@ -508,7 +515,7 @@ bech32@1.1.4:
   resolved "https://registry.yarnpkg.com/bech32/-/bech32-1.1.4.tgz#e38c9f37bf179b8eb16ae3a772b40c356d4832e9"
   integrity sha512-s0IrSOzLlbvX7yp4WBfPITzpAU8sqQcpsmwXDiKwrG4r491vwCO/XpejasRNl0piBMe/DvP4Tz0mIS/X1DPJBQ==
 
-big-integer@^1.6.42, big-integer@^1.6.48:
+big-integer@*, big-integer@^1.6.42, big-integer@^1.6.48:
   version "1.6.48"
   resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.48.tgz#8fd88bd1632cba4a1c8c3e3d7159f08bb95b4b9e"
   integrity sha512-j51egjPa7/i+RdiRuJbPdJ2FIUYYPhvYLjzoYbcMMm62ooO6F94fETG4MTs46zPAF9Brs04OajboA/qTGuz78w==
@@ -694,6 +701,14 @@ cors@^2.8.5:
     object-assign "^4"
     vary "^1"
 
+crc-32@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/crc-32/-/crc-32-1.2.0.tgz#cb2db6e29b88508e32d9dd0ec1693e7b41a18208"
+  integrity sha512-1uBwHxF+Y/4yF5G48fwnKq6QsIXheor3ZLPT80yGBV1oEUwpPojlEhQbWKVw1VwcTQyMGHK1/XMmTjmlsmTTGA==
+  dependencies:
+    exit-on-epipe "~1.0.1"
+    printj "~1.1.0"
+
 create-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
@@ -821,6 +836,11 @@ ethers@^5.0.25:
     "@ethersproject/wallet" "5.0.10"
     "@ethersproject/web" "5.0.12"
     "@ethersproject/wordlists" "5.0.8"
+
+exit-on-epipe@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/exit-on-epipe/-/exit-on-epipe-1.0.1.tgz#0bdd92e87d5285d267daa8171d0eb06159689692"
+  integrity sha512-h2z5mrROTxce56S+pnvAV890uu7ls7f1kEvVGJbw1OlFH3/mlJ5bkXu0KRyW94v37zzHPiUd55iLn3DA7TjWpw==
 
 express@^4.17.1:
   version "4.17.1"
@@ -1366,6 +1386,11 @@ prettier@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
   integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
+
+printj@~1.1.0:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/printj/-/printj-1.1.2.tgz#d90deb2975a8b9f600fb3a1c94e3f4c53c78a222"
+  integrity sha512-zA2SmoLaxZyArQTOPj5LXecR+RagfPSU5Kw1qP+jkWeNlrq+eJZyY2oS68SU1Z/7/myXM4lo9716laOFAVStCQ==
 
 proxy-addr@~2.0.5:
   version "2.0.6"

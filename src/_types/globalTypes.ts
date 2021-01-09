@@ -91,3 +91,12 @@ export interface SnarkJSProof {
     biomebase: number; // biome perlin value. combined with spaceType to get the actual biome
   }
   
+
+export type SnarkLogData = {
+  expectedSignals: string[];
+  actualSignals: string[];
+  proofVerified: boolean;
+  circuitCRC: number;
+  zkeyCRC: number;
+  snarkjsCRC: number;
+};
