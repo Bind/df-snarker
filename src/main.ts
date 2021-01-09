@@ -11,7 +11,7 @@ type MoveInfo = {
   r: string;
   distMax: string;
 };
-const vkey = JSON.parse(fs.readFileSync(`${__dirname}/vkey/move.json`));
+const vkey = JSON.parse(fs.readFileSync(`${__dirname}/../snark_files/move_vkey.json`));
 
 export default async function getMoveArgs(
   x1: number,
@@ -33,8 +33,8 @@ export default async function getMoveArgs(
 
     const snarkProof = await snarkjs.groth16.fullProve(
       input,
-      `${__dirname}/circuits/move.wasm`,
-      `${__dirname}/zkey/move.zkey`
+      `${__dirname}/../snark_files/move_circuit.wasm`,
+      `${__dirname}/../snark_files/move.zkey`
     );
 
     const localVerified = await snarkjs.groth16.verify(

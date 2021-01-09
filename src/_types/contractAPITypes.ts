@@ -5,7 +5,7 @@ import {
   LocationId,
   Location,
   Upgrade,
-} from '../../global/GlobalTypes';
+} from './globalTypes';
 
 // TODO write these types
 export type ContractCallArgs = Array<unknown>;
