@@ -802,4 +802,3 @@ try {
 } catch (error) {
   console.log("Browser does not support BigInt.");
 }
-ƒ;
