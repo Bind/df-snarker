@@ -4,7 +4,7 @@ ENV ENV_NAME dev
 ENV EGG_SERVER_ENV dev
 ENV NODE_ENV dev
 ENV NODE_CONFIG_ENV dev
-
+RUN apk --no-cache add git
 # Create Directory for the Container
 WORKDIR /usr/src/app
 # Only copy the package.json file to work directory
