@@ -1,101 +1,77 @@
-  const snarkjs = require("snarkjs");
-  const fs = require("fs");
-  import { MoveSnarkArgs, ContractCallArgs } from "./_types/contractAPITypes";
-  import {
-    SnarkJSProof,
-    SnarkJSProofAndSignals,
-    SnarkLogData
-  } from './_types/globalTypes';
-  import mimcHash,{ modPBigInt,modPBigIntNative  } from "./mimc";
-  import perlin from "./perlin"
-  import bigInt,{ BigInteger } from 'big-integer'
-  import * as CRC32 from 'crc-32';
+const snarkjs = require("snarkjs");
+import {
+  SnarkJSProofAndSignals,
+  buildContractCallArgs,
+  MoveSnarkInput,
+  MoveSnarkContractCallArgs,
+  moveSnarkWasmPath,
+  moveSnarkZkeyPath,
+} from "@darkforest_eth/snarks";
 
-  type MoveInfo = {
-    x1: string;
-    y1: string;
-    x2: string; 
-    y2: string;
-    r: string;
-    distMax: string;
-  };
-  const vkey = JSON.parse(fs.readFileSync(`${__dirname}/../snark_files/move_vkey.json`));
+import { modPBigInt } from "@darkforest_eth/hashing";
 
-  export default async function getMoveArgs(
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
-    r: number,
-    distMax: number
-  ): Promise<[MoveSnarkArgs, SnarkLogData]> {
-    try {
-      const input: MoveInfo = {
-        x1: modPBigInt(x1).toString(),
-        y1: modPBigInt(y1).toString(),
-        x2: modPBigInt(x2).toString(),
-        y2: modPBigInt(y2).toString(),
-        r: r.toString(),
-        distMax: distMax.toString(),
-      };
+//Should pull these from the actual contract or via an ENV file
+const contractConstants = {
+  BIOMEBASE_KEY: 422,
+  BIOME_THRESHOLD_1: 15,
+  BIOME_THRESHOLD_2: 17,
+  DISABLE_ZK_CHECKS: false,
+  INIT_PERLIN_MAX: 14,
+  INIT_PERLIN_MIN: 13,
+  LOCATION_REVEAL_COOLDOWN: 86400,
+  MAX_NATURAL_PLANET_LEVEL: 256,
+  PERLIN_LENGTH_SCALE: 16384,
+  PERLIN_MIRROR_X: false,
+  PERLIN_MIRROR_Y: false,
+  PERLIN_THRESHOLD_1: 14,
+  PERLIN_THRESHOLD_2: 15,
+  PERLIN_THRESHOLD_3: 19,
+  PHOTOID_ACTIVATION_DELAY: 43200,
+  PLANETHASH_KEY: 420,
+  PLANET_RARITY: 16384,
+  SPACETYPE_KEY: 421,
+  TIME_FACTOR_HUNDREDTHS: 100,
+};
 
-      const snarkProof = await snarkjs.groth16.fullProve(
-        input,
-        `${__dirname}/../snark_files/move_circuit.wasm`,
-        `${__dirname}/../snark_files/move.zkey`
-      );
+export default async function getMoveArgs(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  r: number,
+  distMax: number
+): Promise<MoveSnarkContractCallArgs> {
+  try {
+    const input: MoveSnarkInput = {
+      x1: modPBigInt(x1).toString(),
+      y1: modPBigInt(y1).toString(),
+      x2: modPBigInt(x2).toString(),
+      y2: modPBigInt(y2).toString(),
+      r: r.toString(),
+      distMax: distMax.toString(),
+      PLANETHASH_KEY: contractConstants.PLANETHASH_KEY.toString(),
+      SPACETYPE_KEY: contractConstants.SPACETYPE_KEY.toString(),
+      SCALE: contractConstants.PERLIN_LENGTH_SCALE.toString(),
+      xMirror: contractConstants.PERLIN_MIRROR_X ? "1" : "0",
+      yMirror: contractConstants.PERLIN_MIRROR_X ? "1" : "0",
+    };
 
-      const hash1 =  mimcHash(x1, y1);
-      const hash2 =  mimcHash(x2, y2);
-      const perl2 = perlin({ x: x2, y: y2 });
-      const publicSignals: BigInteger[] = [
-        hash1,
-        hash2,
-        bigInt(perl2),
-        bigInt(r),
-        bigInt(distMax),
-      ];
-      
-      const proofArgs = callArgsFromProofAndSignals(
-        snarkProof.proof,
-        publicSignals
-      );
+    const {
+      proof,
+      publicSignals,
+    }: SnarkJSProofAndSignals = await snarkjs.groth16.fullProve(
+      input,
+      moveSnarkWasmPath,
+      moveSnarkZkeyPath
+    );
 
-      const localVerified = await snarkjs.groth16.verify(
-        vkey,
-        snarkProof.publicSignals,
-        snarkProof.proof
-      );
-      console.log(`locally verified ${localVerified}`);
-      const snarkLogs: SnarkLogData = {
-        expectedSignals: snarkProof.publicSignals,
-        actualSignals: publicSignals.map((x) => x.toString()),
-        proofVerified: false,
-        circuitCRC: CRC32.buf([1]),
-        zkeyCRC: CRC32.buf([1]),
-        snarkjsCRC: CRC32.buf([1]),
-      };
+    const proofArgs = buildContractCallArgs(
+      proof,
+      publicSignals
+    ) as MoveSnarkContractCallArgs;
 
-      return [proofArgs as MoveSnarkArgs , snarkLogs]
-    } catch (e) {
-      throw e;
-    }
+    return proofArgs;
+  } catch (e) {
+    throw e;
   }
-
-  function callArgsFromProofAndSignals(
-    snarkProof: SnarkJSProof,
-    publicSignals: BigInteger[]
-  ): ContractCallArgs {
-    // the object returned by genZKSnarkProof needs to be massaged into a set of parameters the verifying contract
-    // will accept
-    return [
-      snarkProof.pi_a.slice(0, 2), // pi_a
-      // genZKSnarkProof reverses values in the inner arrays of pi_b
-      [
-        snarkProof.pi_b[0].slice(0).reverse(),
-        snarkProof.pi_b[1].slice(0).reverse(),
-      ], // pi_b
-      snarkProof.pi_c.slice(0, 2), // pi_c
-      publicSignals.map((signal) => signal.toString(10)), // input
-    ];
-  }
+}
