@@ -1,5 +1,5 @@
 const snarkjs = require("snarkjs");
-const LRUMap = require("mnemonist");
+const { LRUMap } = require("mnemonist");
 import {
   SnarkJSProofAndSignals,
   buildContractCallArgs,
