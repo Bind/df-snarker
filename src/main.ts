@@ -1,4 +1,5 @@
 const snarkjs = require("snarkjs");
+const LRUMap = require("mnemonist");
 import {
   SnarkJSProofAndSignals,
   buildContractCallArgs,
@@ -9,6 +10,8 @@ import {
 } from "@darkforest_eth/snarks";
 
 import { modPBigInt } from "@darkforest_eth/hashing";
+const CACHE_SIZE: number = parseInt(process?.env?.CACHE_SIZE || "10000");
+const InMemoryCache = new LRUMap(CACHE_SIZE);
 
 //Should pull these from the actual contract or via an ENV file
 const contractConstants = {
@@ -42,6 +45,11 @@ export default async function getMoveArgs(
   distMax: number
 ): Promise<MoveSnarkContractCallArgs> {
   try {
+    const cacheKey = `${x1}-${y1}-${x2}-${y2}-${r}-${distMax}`;
+    const cachedResult = InMemoryCache.get(cacheKey);
+    if (cachedResult) {
+      return cachedResult as MoveSnarkContractCallArgs;
+    }
     const input: MoveSnarkInput = {
       x1: modPBigInt(x1).toString(),
       y1: modPBigInt(y1).toString(),
@@ -69,7 +77,7 @@ export default async function getMoveArgs(
       proof,
       publicSignals
     ) as MoveSnarkContractCallArgs;
-
+    InMemoryCache.set(cacheKey, proofArgs);
     return proofArgs;
   } catch (e) {
     throw e;
