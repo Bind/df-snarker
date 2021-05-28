@@ -1,17 +1,16 @@
 import express, { Request, Response } from "express";
 import getMoveArgs from "./src/main";
-const app = express();
 import bodyParser from "body-parser";
 import cors from "cors";
+
+const app = express();
 app.use(cors());
-
-// Controllers (route handlers)
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const port = 8082; // default port to listen
 
-// define a route handler for the default home page
+const hostname = process.env.HOST || "localhost";
+const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 8082;
+
 app.post("/move", async (req: Request, res: Response) => {
   const respBody = await getMoveArgs(
     req.body.x1,
@@ -25,6 +24,6 @@ app.post("/move", async (req: Request, res: Response) => {
 });
 
 // start the Express server
-app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
+app.listen(port, hostname, () => {
+  console.log(`server started at http://${hostname}:${port}`);
 });
