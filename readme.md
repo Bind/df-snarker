@@ -28,7 +28,7 @@ Add the repository for node
 
 Install more dependencies
 
-`sudo apt install -y node-typescript nodejs`
+`sudo apt install -y nodejs`
 
 Install yarn with npm
 
