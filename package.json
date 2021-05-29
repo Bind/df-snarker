@@ -25,8 +25,8 @@
   },
   "scripts": {
     "dev": "ts-node server",
-    "build": "tsc --project tsconfig.json && yarn copy-files",
+    "build": "tsc --project tsconfig.json",
     "start": "node build/server.js",
-    "copy-files": "mkdir -p ./build/snark_files && cp ./snark_files/* ./build/snark_files/"
+    "prepare": "yarn build"
   }
 }
