@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import getMoveArgs from "./src/main";
+import { getMoveArgs } from "./src/main";
 import bodyParser from "body-parser";
 import cors from "cors";
 

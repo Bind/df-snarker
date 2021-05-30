@@ -8,6 +8,14 @@ import {
   MoveSnarkContractCallArgs,
   moveSnarkWasmPath,
   moveSnarkZkeyPath,
+  BiomebaseSnarkContractCallArgs,
+  BiomebaseSnarkInput,
+  biomebaseSnarkWasmPath,
+  biomebaseSnarkZkeyPath,
+  RevealSnarkContractCallArgs,
+  RevealSnarkInput,
+  revealSnarkWasmPath,
+  revealSnarkZkeyPath,
 } from "@darkforest_eth/snarks";
 
 import { modPBigInt } from "@darkforest_eth/hashing";
@@ -37,7 +45,7 @@ const contractConstants = {
   TIME_FACTOR_HUNDREDTHS: 100,
 };
 
-export default async function getMoveArgs(
+export async function getMoveArgs(
   x1: number,
   y1: number,
   x2: number,
@@ -80,6 +88,74 @@ export default async function getMoveArgs(
     ) as MoveSnarkContractCallArgs;
     InMemoryCache.set(cacheKey, proofArgs);
     return proofArgs;
+  } catch (e) {
+    throw e;
+  }
+}
+
+export async function getFindArtifactArgs(
+  x: number,
+  y: number
+): Promise<BiomebaseSnarkContractCallArgs> {
+  try {
+    const start = Date.now();
+    console.log("ARTIFACT: calculating witness and proof");
+    const input: BiomebaseSnarkInput = {
+      x: modPBigInt(x).toString(),
+      y: modPBigInt(y).toString(),
+      PLANETHASH_KEY: contractConstants.PLANETHASH_KEY.toString(),
+      BIOMEBASE_KEY: contractConstants.BIOMEBASE_KEY.toString(),
+      SCALE: contractConstants.PERLIN_LENGTH_SCALE.toString(),
+      xMirror: contractConstants.PERLIN_MIRROR_X ? "1" : "0",
+      yMirror: contractConstants.PERLIN_MIRROR_X ? "1" : "0",
+    };
+
+    const {
+      proof,
+      publicSignals,
+    }: SnarkJSProofAndSignals = await snarkjs.groth16.fullProve(
+      input,
+      biomebaseSnarkWasmPath,
+      biomebaseSnarkZkeyPath
+    );
+
+    const proofArgs = buildContractCallArgs(proof, publicSignals);
+
+    return proofArgs as BiomebaseSnarkContractCallArgs;
+  } catch (e) {
+    throw e;
+  }
+}
+
+export async function getRevealArgs(
+  x: number,
+  y: number
+): Promise<RevealSnarkContractCallArgs> {
+  try {
+    const input: RevealSnarkInput = {
+      x: modPBigInt(x).toString(),
+      y: modPBigInt(y).toString(),
+      PLANETHASH_KEY: contractConstants.PLANETHASH_KEY.toString(),
+      SPACETYPE_KEY: contractConstants.SPACETYPE_KEY.toString(),
+      SCALE: contractConstants.PERLIN_LENGTH_SCALE.toString(),
+      xMirror: contractConstants.PERLIN_MIRROR_X ? "1" : "0",
+      yMirror: contractConstants.PERLIN_MIRROR_X ? "1" : "0",
+    };
+
+    const {
+      proof,
+      publicSignals,
+    }: SnarkJSProofAndSignals = snarkjs.groth16.fullProve(
+      input,
+      revealSnarkWasmPath,
+      revealSnarkZkeyPath
+    );
+    const ret = buildContractCallArgs(
+      proof,
+      publicSignals
+    ) as RevealSnarkContractCallArgs;
+
+    return ret;
   } catch (e) {
     throw e;
   }
