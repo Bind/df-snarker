@@ -23,6 +23,10 @@ app.post("/move", async (req: Request, res: Response) => {
   res.json(respBody);
 });
 
+app.get("/", async (req, res) => {
+  res.send("v.6 Round 1 Dark Forest Snarking Server ");
+});
+
 // start the Express server
 app.listen(port, hostname, () => {
   console.log(`server started at http://${hostname}:${port}`);
