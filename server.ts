@@ -13,7 +13,7 @@ const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 8082;
 
 app.post("/move", async (req: Request, res: Response) => {
   console.log(
-    `Generating proof for Move {x1: ${req.body.x1}, y1:${req.body.y1}, x2:${req.body.x2s}, y2:${req.body.y2}, r: ${req.body.r}, distMax: ${req.body.distMax} }`
+    `Generating proof for Move { x1: ${req.body.x1}, y1:${req.body.y1}, x2:${req.body.x2}, y2:${req.body.y2}, r: ${req.body.r}, distMax: ${req.body.distMax} }`
   );
   const respBody = await getMoveArgs(
     req.body.x1,
