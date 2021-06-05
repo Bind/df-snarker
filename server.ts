@@ -31,6 +31,6 @@ app.get("/", async (req, res) => {
 });
 
 // start the Express server
-app.listen(port, hostname, () => {
+app.listen(port, () => {
   console.log(`server started at http://${hostname}:${port}`);
 });
