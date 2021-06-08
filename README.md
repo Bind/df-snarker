@@ -24,4 +24,4 @@ start the snarker
 
 ## Adding to your Plugin
 
-When adding the server address to your remote snarking plugin be sure to include /move to the url!
+When adding the server address to your remote snarking plugin be sure to add /move to the end of the url!
