@@ -8,7 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const hostname = process.env.HOST || "localhost";
+const hostname = process.env.HOST || "0.0.0.0";
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 8082;
 
 app.post("/move", async (req: Request, res: Response) => {
