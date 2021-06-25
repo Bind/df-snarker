@@ -2,55 +2,55 @@
 # yarn lockfile v1
 
 
-"@darkforest_eth/constants@6.1.7":
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/constants/-/constants-6.1.7.tgz#f7be44e08ce2d8d00ef253b83cd2c628aa4a2059"
-  integrity sha512-1ls0SVDNv97zBDLZujWAthXvMTN4ABbzBE/KYeaZ3yoyTv2xCfSlIxCBTsQ+AfbFlnBLE5H7bnFFH7n5tIEBPw==
+"@darkforest_eth/constants@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/constants/-/constants-6.2.0.tgz#494b6a9cda3b24dc09d19d8eed74f4b74a18e2d2"
+  integrity sha512-J0/PFaOPRL0+1mEHEsgmcN6DKG2eIr5cw4yd3GRO8EjRRDYIr+I0e6NBkmJGpTW1b0VfYb6PI6eCs644lDNqeQ==
   dependencies:
-    "@darkforest_eth/types" "6.1.7"
+    "@darkforest_eth/types" "6.2.0"
     big-integer "^1.6.48"
 
-"@darkforest_eth/contracts@6.1.7":
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/contracts/-/contracts-6.1.7.tgz#e83e9bb103b7bc860a12f4855f18074ea10747dd"
-  integrity sha512-p/kpfYl9nq479GoO5U8NLXQmy+glNv+ljniSQTldUfe7Koe3Z9+am7iFYL19dnuwpyFle4bbNdhyCpc+YjyBIg==
+"@darkforest_eth/contracts@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/contracts/-/contracts-6.2.0.tgz#c562b725be85d4b05c7dfcdb1843113fda2f1625"
+  integrity sha512-UkMd5fcsIRNMOTKt1GMflNLXijR3aCIAUs/eiYnIYggsAR5BG7P39MP4DtYuQPva3UcgPmHZg3S+dgYCx204AQ==
 
-"@darkforest_eth/hashing@6.1.7":
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/hashing/-/hashing-6.1.7.tgz#739a4f08ea6944fe8919285c411933e4d3dca12a"
-  integrity sha512-9fO3V9/EKGvWEDF0m+GTZmkfdNZohtc0dhXqhUehr02JHOcLCd9FGJEix9KJKbo0Jg1ev6RDzkfXylTH4+bE0A==
+"@darkforest_eth/hashing@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/hashing/-/hashing-6.2.0.tgz#681456f3d76ce356386997a707129ec42070f642"
+  integrity sha512-xRTuayY4OHHTEAGHbzjJmB5Vx28FKGXa1rhK1pIwJRfGZu8or+NkTBiy5x0cyLrMFtOUFul20yHuygeGh918Iw==
   dependencies:
     big-integer "^1.6.48"
 
-"@darkforest_eth/hexgen@6.1.7":
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/hexgen/-/hexgen-6.1.7.tgz#bcdb5ca96121a5883d23903265b92a7b7cdae416"
-  integrity sha512-UpRv+JDVFn8PrXEN6dpMqi1MShKdapmXZ44s+7p2pw/r/xSeQ+blTaRbd+J0jvOVR+k+wxS/0S08lDUWOPxN6Q==
+"@darkforest_eth/hexgen@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/hexgen/-/hexgen-6.2.0.tgz#2c35224794517059999450fe1e399e53987af700"
+  integrity sha512-uy2BYPtq86vqi1eyZCE3lpVMpgcifCKJYhIXv1YpC3kKorAOnFTlZnZ5Ya5tSkSXSvid1xwJWn4g/x9R1gvESA==
   dependencies:
-    "@darkforest_eth/types" "6.1.7"
+    "@darkforest_eth/types" "6.2.0"
     big-integer "^1.6.48"
 
-"@darkforest_eth/serde@6.1.7":
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/serde/-/serde-6.1.7.tgz#7986c2dfed90096e98e56627b9bee45137aefa0c"
-  integrity sha512-4KRXDakbDnrCVeqQtgJZVQWN4UGiORwjWCUXW3ugcTzATmXaPoR3F8rxfi3I0SmnAYcQcKEYuKOb4xPFNAFefw==
+"@darkforest_eth/serde@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/serde/-/serde-6.2.0.tgz#b5c44a17a591a70d85b5abf7a71ffc732ced62e6"
+  integrity sha512-Fo7Un/vVp8+vf/0G9gEKvZj2b2zI6r8M27meIaodBE8xFsqK6O2WZQr/OGZLjD3yze+iWEyyiEGnHkFMZ2b9kg==
   dependencies:
-    "@darkforest_eth/constants" "6.1.7"
-    "@darkforest_eth/contracts" "6.1.7"
-    "@darkforest_eth/hexgen" "6.1.7"
-    "@darkforest_eth/types" "6.1.7"
+    "@darkforest_eth/constants" "6.2.0"
+    "@darkforest_eth/contracts" "6.2.0"
+    "@darkforest_eth/hexgen" "6.2.0"
+    "@darkforest_eth/types" "6.2.0"
     big-integer "^1.6.48"
     ethers "^5.0.7"
 
-"@darkforest_eth/snarks@6.1.7":
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/snarks/-/snarks-6.1.7.tgz#84868914de7424423b17802da29f678c5965745a"
-  integrity sha512-wyuWP9i4uuK536EqVxXumdX58kZa28vBSo6U2hKb6yrU4uDaP9K3aACfC9Rdja1cDv8pvXVgwkUSh80zzgUZWg==
+"@darkforest_eth/snarks@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/snarks/-/snarks-6.2.0.tgz#461c999e701447613e00fad9ac23c08495d792d6"
+  integrity sha512-gWKZiri05q3V3ASVcQQGrwYLovBP8vyQ9yhxJVI5QN2qhZSzMfkC+iJGX6MfShDCCxNDD/I43la6T7+or7sZFA==
 
-"@darkforest_eth/types@6.1.7":
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/types/-/types-6.1.7.tgz#084005d115c8d371b9bad258b76cd60d08487c25"
-  integrity sha512-v/nSMDpWzd7tUU7mj9t/o1FQlrNMZIOKDE872bcIskmcI5jfPqENOxRrEGUe4YTpK6CpGpqBpzWMLHvLCuXFPg==
+"@darkforest_eth/types@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/types/-/types-6.2.0.tgz#d1e486674e51c9d1ded21a15a0b9262aceda151e"
+  integrity sha512-qNFYdIS0b87wCWPoCBBZ5eAMpPd4RIXKBVurKPQRnf43iOIjHch/GpdCUtJPYoV3qNn0ZLN6J++CXpVpC0smtg==
   dependencies:
     big-integer "^1.6.48"
     ethers "^5.0.7"

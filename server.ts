@@ -27,7 +27,7 @@ app.post("/move", async (req: Request, res: Response) => {
 });
 
 app.get("/", async (req, res) => {
-  res.send("v.6 Round 1 Dark Forest Snarking Server ");
+  res.send("v.6 Round 2 Dark Forest Snarking Server");
 });
 
 // start the Express server
