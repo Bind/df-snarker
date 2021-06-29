@@ -17,4 +17,3 @@ ADD . /usr/src/app
 RUN npm run build
 # Start
 CMD [ "npm", "start" ]
-EXPOSE 8082
