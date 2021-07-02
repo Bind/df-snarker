@@ -17,6 +17,10 @@ install with npm
 
 `npm install`
 
+build with npm
+
+`npm run build`
+
 start the snarker
 
 `npm run start`
