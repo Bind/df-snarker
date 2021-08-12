@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { getMoveArgs } from "./src/main";
+import { getMoveArgs, getFindArtifactArgs, getRevealArgs } from "./src/main";
 import bodyParser from "body-parser";
 import cors from "cors";
 
@@ -26,6 +26,16 @@ app.post("/move", async (req: Request, res: Response) => {
   res.json(respBody);
 });
 
+app.post("/find", async (req: Request, res: Response) => {
+  const respBody = await getFindArtifactArgs(req.body.x, req.body.y);
+  res.json(respBody);
+});
+
+app.post("/reveal", async (req: Request, res: Response) => {
+  const respBody = await getRevealArgs(req.body.x, req.body.y);
+  res.json(respBody);
+});
+  
 app.get("/", async (req, res) => {
   console.log("v.6 Round 2 Dark Forest Snarking Server");
   res.send("v.6 Round 2 Dark Forest Snarking Server");
