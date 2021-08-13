@@ -23,13 +23,13 @@ const CACHE_SIZE: number = parseInt(process?.env?.CACHE_SIZE || "10000");
 const InMemoryCache = new LRUMap(CACHE_SIZE);
 
 //Should pull these from the actual contract or via an ENV file
-const contractConstants = {
-  BIOMEBASE_KEY: 432,
+let contractConstants = {
+  BIOMEBASE_KEY: 1731,
   BIOME_THRESHOLD_1: 15,
   BIOME_THRESHOLD_2: 17,
   DISABLE_ZK_CHECKS: false,
-  INIT_PERLIN_MAX: 15,
-  INIT_PERLIN_MIN: 14,
+  INIT_PERLIN_MAX: 1,
+  INIT_PERLIN_MIN: 31,
   LOCATION_REVEAL_COOLDOWN: 86400,
   MAX_NATURAL_PLANET_LEVEL: 256,
   PERLIN_LENGTH_SCALE: 16384,
@@ -39,9 +39,9 @@ const contractConstants = {
   PERLIN_THRESHOLD_2: 2,
   PERLIN_THRESHOLD_3: 18,
   PHOTOID_ACTIVATION_DELAY: 14400,
-  PLANETHASH_KEY: 430,
+  PLANETHASH_KEY: 1729,
   PLANET_RARITY: 16384,
-  SPACETYPE_KEY: 431,
+  SPACETYPE_KEY: 1730,
   TIME_FACTOR_HUNDREDTHS: 100,
 };
 
