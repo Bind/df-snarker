@@ -1,6 +1,6 @@
 # df-snarker
 
-Hi there! :wave: this is the [Dark Forest v6 Round 2](https://zkga.me) Remote Snarking Plug-in Server.
+Hi there! :wave: this is the [Dark Forest v6 Round 3](https://zkga.me) Remote Snarking Plug-in Server.
 
 This server should be used in conjunction with https://github.com/darkforest-eth/plugins/blob/master/content/productivity/remote-snarker/plugin.js
 
