@@ -21,18 +21,39 @@ app.post("/move", async (req: Request, res: Response) => {
     req.body.x2,
     req.body.y2,
     req.body.r,
-    req.body.distMax
+    req.body.distMax,
+    req.body.PLANETHASH_KEY,
+    req.body.SPACETYPE_KEY,
+    req.body.SCALE,
+    req.body.xMirror,
+    req.body.yMirror
   );
   res.json(respBody);
 });
 
 app.post("/find", async (req: Request, res: Response) => {
-  const respBody = await getFindArtifactArgs(req.body.x, req.body.y);
+  const respBody = await getFindArtifactArgs(
+    req.body.x,
+    req.body.y,
+    req.body.PLANETHASH_KEY,
+    req.body.BIOMEBASE_KEY,
+    req.body.SCALE,
+    req.body.xMirror,
+    req.body.yMirror
+  );
   res.json(respBody);
 });
 
 app.post("/reveal", async (req: Request, res: Response) => {
-  const respBody = await getRevealArgs(req.body.x, req.body.y);
+  const respBody = await getRevealArgs(
+    req.body.x,
+    req.body.y,
+    req.body.PLANETHASH_KEY,
+    req.body.SPACETYPE_KEY,
+    req.body.SCALE,
+    req.body.xMirror,
+    req.body.yMirror
+  );
   res.json(respBody);
 });
 
