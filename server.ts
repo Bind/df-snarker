@@ -58,8 +58,8 @@ app.post("/reveal", async (req: Request, res: Response) => {
 });
 
 app.get("/", async (req, res) => {
-  console.log("v.6 Round 4 Dark Forest Snarking Server");
-  res.send("v.6 Round 4 Dark Forest Snarking Server");
+  console.log("v.6 Dark Forest Snarking Server");
+  res.send("v.6 Dark Forest Snarking Server");
 });
 
 // start the Express server
