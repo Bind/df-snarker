@@ -26,6 +26,4 @@ start the snarker
 `npm run start`
 
 
-## Adding to your Plugin
 
-When adding the server address to your remote snarking plugin be sure to add /move to the end of the url!
